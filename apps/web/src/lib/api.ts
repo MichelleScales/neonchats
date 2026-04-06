@@ -101,6 +101,21 @@ export const integrations = {
   hubspotLists: () => api.get("/api/integrations/hubspot/lists").then((r) => r.data),
 };
 
+// ── Connectors (MCP Gateway) ────────────────────────────────────────────────
+export const connectors = {
+  status: () => api.get("/api/connectors/status").then((r) => r.data),
+  listCredentials: () => api.get("/api/connectors/credentials").then((r) => r.data),
+  upsertCredentials: (data: unknown) =>
+    api.post("/api/connectors/credentials", data).then((r) => r.data),
+  deleteCredentials: (id: string) =>
+    api.delete(`/api/connectors/credentials/${id}`).then((r) => r.data),
+  verifyCredentials: (id: string) =>
+    api.post(`/api/connectors/credentials/${id}/verify`).then((r) => r.data),
+  listJobs: (params?: { campaign_id?: string; provider?: string; limit?: number }) =>
+    api.get("/api/connectors/jobs", { params }).then((r) => r.data),
+  getJob: (id: string) => api.get(`/api/connectors/jobs/${id}`).then((r) => r.data),
+};
+
 // ── Analytics ──────────────────────────────────────────────────────────────
 export const analytics = {
   summary: (params?: { campaign_id?: string }) =>

@@ -8,6 +8,7 @@ from app.models.execution import ExecutionRun
 from app.models.analytics import AnalyticsEvent
 from app.models.audit import AuditLog
 from app.models.experiment import Experiment
+from app.models.connector import ConnectorCredential, ConnectorJob
 
 __all__ = [
     "Tenant", "User", "Role", "UserRole",
@@ -19,4 +20,5 @@ __all__ = [
     "AnalyticsEvent",
     "AuditLog",
     "Experiment",
+    "ConnectorCredential", "ConnectorJob",
 ]
