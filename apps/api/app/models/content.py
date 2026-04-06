@@ -45,6 +45,9 @@ class ContentVariant(TenantScopedBase):
     # ad_copy: { headline, description, cta }
     body: Mapped[dict] = mapped_column(JSONB, nullable=False, default=dict)
 
+    # A/B experiment traffic allocation weight (relative, not a percentage)
+    traffic_weight: Mapped[float] = mapped_column(nullable=False, default=1.0)
+
     quality_score: Mapped[float | None] = mapped_column(Numeric(4, 2), nullable=True)
     approval_state: Mapped[str] = mapped_column(String(50), nullable=False, default="pending")
     # pending | submitted | approved | rejected

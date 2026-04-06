@@ -24,6 +24,9 @@ class AnalyticsEvent(Base):
     execution_run_id: Mapped[uuid.UUID | None] = mapped_column(
         ForeignKey("execution_runs.id", ondelete="SET NULL"), nullable=True
     )
+    variant_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("content_variants.id", ondelete="SET NULL"), nullable=True, index=True
+    )
 
     event_type: Mapped[str] = mapped_column(String(50), nullable=False, index=True)
     # send | open | click | conversion | spend | impression | bounce

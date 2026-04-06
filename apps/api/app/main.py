@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import get_settings
 from app.database import engine
 from app.models import *  # noqa: F401, F403 — register all models with SQLAlchemy
-from app.routers import auth, campaigns, content, approvals, voice, executions, analytics, audit, integrations
+from app.routers import auth, campaigns, content, approvals, voice, executions, analytics, audit, integrations, experiments
 
 settings = get_settings()
 
@@ -41,6 +41,7 @@ app.include_router(executions.router)
 app.include_router(analytics.router)
 app.include_router(audit.router)
 app.include_router(integrations.router)
+app.include_router(experiments.router)
 
 
 @app.get("/health")

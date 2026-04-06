@@ -78,6 +78,23 @@ export const executions = {
   retry: (runId: string) => api.post(`/api/executions/${runId}/retry`).then((r) => r.data),
 };
 
+// ── Experiments ────────────────────────────────────────────────────────────
+export const experiments = {
+  create: (data: unknown) => api.post("/api/experiments", data).then((r) => r.data),
+  listByCampaign: (campaignId: string) =>
+    api.get(`/api/experiments/campaign/${campaignId}`).then((r) => r.data),
+  get: (id: string) => api.get(`/api/experiments/${id}`).then((r) => r.data),
+  update: (id: string, data: unknown) => api.patch(`/api/experiments/${id}`, data).then((r) => r.data),
+  setWeights: (id: string, weights: Record<string, number>) =>
+    api.post(`/api/experiments/${id}/set-weights`, { weights }).then((r) => r.data),
+  selectVariant: (id: string) =>
+    api.post(`/api/experiments/${id}/select-variant`).then((r) => r.data),
+  recordEvent: (id: string, data: unknown) =>
+    api.post(`/api/experiments/${id}/record-event`, data).then((r) => r.data),
+  conclude: (id: string, data: unknown) =>
+    api.post(`/api/experiments/${id}/conclude`, data).then((r) => r.data),
+};
+
 // ── Integrations ───────────────────────────────────────────────────────────
 export const integrations = {
   status: () => api.get("/api/integrations/status").then((r) => r.data),

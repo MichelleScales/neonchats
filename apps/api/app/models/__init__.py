@@ -7,6 +7,7 @@ from app.models.approval import Approval, ApprovalComment
 from app.models.execution import ExecutionRun
 from app.models.analytics import AnalyticsEvent
 from app.models.audit import AuditLog
+from app.models.experiment import Experiment
 
 __all__ = [
     "Tenant", "User", "Role", "UserRole",
@@ -17,4 +18,5 @@ __all__ = [
     "ExecutionRun",
     "AnalyticsEvent",
     "AuditLog",
+    "Experiment",
 ]
